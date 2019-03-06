@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class='row'>
+		<div class='col-sm-6 col-sm-offset-3'>
+				<h1>{{ title }}</h1>
+				{% if confirm_message %}
+				<p>{{confirm_message}}</p>
+				{% endif %}
+				{% if form %}
+				<!-- csrf to prevent xss hack -->
+				<form method='POST' action=""> {% csrf_token%}
+					<!-- as_p to be converted to paragrah -->
+					<!-- crispy for bootstrap -->
+					{{ form|crispy }}
+					<input type="submit" value="submit form" class="btn btn-dark"/>
+				</form>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
